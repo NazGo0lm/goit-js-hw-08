@@ -39,3 +39,7 @@ body {
 .gallery-flexbox li {
   flex: 1 0 calc(33.33% - 10px);
 }
+
+.gallery-image{
+  flex: 1 0 calc(33.33% - 10px);
+}
