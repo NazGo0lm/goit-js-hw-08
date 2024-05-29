@@ -64,6 +64,99 @@ const images = [
   },
 ];
 
+/* const boxesContainer = document.querySelector(".gallery");
+const fragment = document.createDocumentFragment();
+
+function liElement(element) {
+  return `<li class="gallery-item">
+        <a class="gallery-link" href="${element.original}">
+          <img class="gallery-image" 
+          src="${element.preview}"
+           data-source="${element.original}" alt="${element.description}" />
+        </a>
+      </li>`
+}
+
+function liElements(arr) {
+  return arr.map(liElement).join("")
+}
+
+const markup = liElements(images);
+
+//fragment.appendChild(markup);
+//fragment.innerHTML =markup;
+boxesContainer.innerHTML = markup;
+
+
+//prevent download
+const imgLinkEl = document.querySelectorAll('.gallery-link');
+imgLinkEl.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+    });
+});
+
+
+
+
+//const gallery = document.querySelector('.gallery');
+
+boxesContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('gallery-item')) {
+    // Обробка кліку на елементі галереї
+    const imageDescription = event.target.textContent;
+    console.log(`Вибрано зображення: ${imageDescription}`);
+  }
+});
+
+
+
+
+ */
+
+
+
+const gallery = document.querySelector('.gallery');
+const galleryItem = images
+  .map(image =>`<li class="gallery-item">
+  <a class="gallery-link" href="${image.original}">
+    <img
+      class="gallery-image"
+      src="${image.preview}"
+      data-source="${image.original}"
+      alt="${image.description}"
+    />
+  </a>
+</li>`)
+  .join('');
+gallery.insertAdjacentHTML('afterbegin', galleryItem);
+
+
+gallery.addEventListener('click', event => {
+  event.preventDefault();
+
+  const galleryLink = event.target.closest('.gallery-link');
+  if (!galleryLink) return;
+
+  const largeImage = event.target.dataset.source;
+  console.log(largeImage);
+
+  const revision = basicLightbox.create(
+    `<img src="${largeImage}" width="800" height="600">`
+  );
+  revision.show();
+});
+
+
+
+
+
+
+
+
+
+
+/* 
 const boxesContainer = document.querySelector(".gallery");
 const fragment = document.createDocumentFragment();
 images.forEach((image) => {
@@ -72,6 +165,7 @@ images.forEach((image) => {
 
     const aParagraph = document.createElement("a");
     aParagraph.class = aParagraph.classList.add("gallery-link");
+    aParagraph.class = aParagraph.classList.add("data-source=[large-image.jpg]");
     aParagraph.href = image.original;
 
 
@@ -79,7 +173,8 @@ images.forEach((image) => {
     imgItem.src = image.preview;
     imgItem.alt = image.description;
     listItem.appendChild(imgItem);
-    fragment.appendChild(listItem);
+    aParagraph.appendChild(listItem);
+    fragment.appendChild(aParagraph);
               
     }
 )
@@ -87,7 +182,7 @@ boxesContainer.appendChild(fragment);
 boxesContainer.classList.add("gallery-flexbox"); 
 
 console.log(boxesContainer);
-
+ */
 /*
 
 {
@@ -111,48 +206,3 @@ console.log(boxesContainer);
 
 */
 
-
-
-
-/*
-
-/*
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
-}
-
-function createBoxes(amount) {
-  const boxesContainer = document.querySelector('#boxes');
-  const fragment = document.createDocumentFragment(); 
-
-  for (let i = 0; i < amount; i++) {
-    const size = 30 + i * 10;
-    const box = document.createElement('div');
-    box.style.width = `${size}px`;
-    box.style.height = `${size}px`;
-    box.style.backgroundColor = getRandomHexColor();
-    fragment.appendChild(box);
-  }
-
-  boxesContainer.innerHTML = ''; 
-  boxesContainer.appendChild(fragment);
-}
-
-function destroyBoxes() {
-  const boxesContainer = document.querySelector('#boxes');
-  boxesContainer.innerHTML = '';
-}
-
-document.querySelector('[data-create]').addEventListener('click', () => {
-  const input = document.querySelector('input[type="number"]');
-  const amount = parseInt(input.value, 10);
-  if (amount >= 1 && amount <= 100) {
-    createBoxes(amount);
-    input.value = '';
-  } else {
-    alert('Please enter a number between 1 and 100.');
-  }
-});
-
-document.querySelector('[data-destroy]').addEventListener('click', destroyBoxes);
-*/
