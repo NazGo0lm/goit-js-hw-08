@@ -64,55 +64,7 @@ const images = [
   },
 ];
 
-/* const boxesContainer = document.querySelector(".gallery");
-const fragment = document.createDocumentFragment();
 
-function liElement(element) {
-  return `<li class="gallery-item">
-        <a class="gallery-link" href="${element.original}">
-          <img class="gallery-image" 
-          src="${element.preview}"
-           data-source="${element.original}" alt="${element.description}" />
-        </a>
-      </li>`
-}
-
-function liElements(arr) {
-  return arr.map(liElement).join("")
-}
-
-const markup = liElements(images);
-
-//fragment.appendChild(markup);
-//fragment.innerHTML =markup;
-boxesContainer.innerHTML = markup;
-
-
-//prevent download
-const imgLinkEl = document.querySelectorAll('.gallery-link');
-imgLinkEl.forEach(function (link) {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-    });
-});
-
-
-
-
-//const gallery = document.querySelector('.gallery');
-
-boxesContainer.addEventListener('click', (event) => {
-  if (event.target.classList.contains('gallery-item')) {
-    // Обробка кліку на елементі галереї
-    const imageDescription = event.target.textContent;
-    console.log(`Вибрано зображення: ${imageDescription}`);
-  }
-});
-
-
-
-
- */
 
 
 
@@ -147,44 +99,7 @@ gallery.addEventListener('click', event => {
   revision.show();
 });
 
-
-
-
-
-
-
-
-
-
-/* 
-const boxesContainer = document.querySelector(".gallery");
-const fragment = document.createDocumentFragment();
-images.forEach((image) => {
-    const listItem = document.createElement("li");
-    listItem.class = listItem.classList.add("gallery-item");
-
-    const aParagraph = document.createElement("a");
-    aParagraph.class = aParagraph.classList.add("gallery-link");
-    aParagraph.class = aParagraph.classList.add("data-source=[large-image.jpg]");
-    aParagraph.href = image.original;
-
-
-    const imgItem = document.createElement("img");
-    imgItem.src = image.preview;
-    imgItem.alt = image.description;
-    listItem.appendChild(imgItem);
-    aParagraph.appendChild(listItem);
-    fragment.appendChild(aParagraph);
-              
-    }
-)
-boxesContainer.appendChild(fragment);
-boxesContainer.classList.add("gallery-flexbox"); 
-
-console.log(boxesContainer);
- */
 /*
-
 {
     preview:
       'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg',
